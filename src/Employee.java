@@ -12,6 +12,7 @@ public class Employee {
         this.salary = salary;
     }
 
+    // Getters for each attribute
     public String getName() {
         return name;
     }
