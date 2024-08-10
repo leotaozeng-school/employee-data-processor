@@ -1,23 +1,24 @@
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
-        // 1: Create and store the dataset in a collection
+        // 1: Create and store the dataset in a collection - List of employees
         List<Employee> employees = getEmployees();
 
-        // 2: Write a Function to concatenate name and department
-        Function<Employee, String> nameAndDeptFunction = employee -> employee.getName() + " - " + employee.getDepartment();
+        // 2: Define a Function that takes an Employee and returns a concatenated string
+        Function<Employee, String> nameDepartmentConcatenator = employee -> employee.getName() + " - " + employee.getDepartment();
 
         // 3: Use streams to generate a new collection of concatenated strings
-        List<String> nameAndDeptList = employees.stream()
-                .map(nameAndDeptFunction)
-                .toList();
+        List<String> employeeInfo = employees.stream()
+                .map(nameDepartmentConcatenator)
+                .collect(Collectors.toList());
 
         // Print the concatenated strings
-        System.out.println("Name and Department List:");
-        nameAndDeptList.forEach(System.out::println);
+        System.out.println("Employee Name and Department List:");
+        employeeInfo.forEach(System.out::println);
     }
 
     public static List<Employee> getEmployees() {
