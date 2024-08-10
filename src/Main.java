@@ -19,6 +19,23 @@ public class Main {
         // Print the concatenated strings
         System.out.println("Employee Name and Department List:");
         employeeInfo.forEach(System.out::println);
+
+        // 4. Calculate the average salary of all employees
+        double averageSalary = employees.stream().mapToDouble(Employee::getSalary)
+                .average()
+                .orElse(0.0);
+
+        System.out.printf("\nAverage Salary: $%.2f\n", averageSalary);
+
+        // 5: Generalize the program by filtering employees whose age is above a threshold (e.g., 30 years)
+        int ageThreshold = 30;
+        List<Employee> filteredEmployees = employees.stream()
+                .filter(employee -> employee.getAge() > ageThreshold)
+                .collect(Collectors.toList());
+
+        // Print the filtered list
+        System.out.println("\nEmployees above age " + ageThreshold + ":");
+        filteredEmployees.forEach(employee -> System.out.println(employee.getName() + " - " + employee.getAge()));
     }
 
     public static List<Employee> getEmployees() {
