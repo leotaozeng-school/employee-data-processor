@@ -1,5 +1,5 @@
 public class Employee {
-    private final String name;
+    private final String name; // private = restricted access
     private final int age;
     private final String department;
     private final double salary;
