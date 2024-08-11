@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -14,6 +15,7 @@ public class Main {
         // 3: Use streams to generate a new collection of concatenated strings
         List<String> employeeInfo = employees.stream()
                 .map(nameDepartmentConcatenator)
+                .sorted(Comparator.comparing(s -> s.split(" - ")[1]))
                 .collect(Collectors.toList());
 
         // Print the concatenated strings
