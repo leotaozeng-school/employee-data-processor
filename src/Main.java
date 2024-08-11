@@ -12,7 +12,7 @@ public class Main {
         // 2: Define a Function that takes an Employee and returns a concatenated string
         Function<Employee, String> nameDepartmentConcatenator = employee -> employee.getName() + " - " + employee.getDepartment();
 
-        // 3: Use streams to generate a new collection of concatenated strings
+        // 3: Use streams to generate a new collection of concatenated strings and sorted by department
         List<String> employeeInfo = employees.stream()
                 .map(nameDepartmentConcatenator)
                 .sorted(Comparator.comparing(s -> s.split(" - ")[1]))
